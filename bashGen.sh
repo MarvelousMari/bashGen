@@ -14,7 +14,7 @@ then
 fi
 
 # check for help
-if [[ ${1} == "-h" || ${1} == "--help" || ${#} -lt 2 ]]
+if [[ ${1} == "-h" || ${1} == "--help" ]]
 then
   echo "FILENAME EDITOR"
   echo "FILENAME doesn't need .sh extension"
@@ -22,6 +22,11 @@ then
   echo "	-a or --atom opens file in Atom text editor"
   echo "	-v or --vim opens file in Vim text editor"
   exit 0
+elif [[ ${#} -lt 2 ]]
+then
+  echo "Command needs arguments"
+  echo "Use -h or --help for help"
+  exit 1
 else
   FILENAME="${1}.sh"
   shift
