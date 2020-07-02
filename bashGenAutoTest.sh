@@ -1,139 +1,142 @@
 #!/bin/bash
 
+# remove any old logs
+rm bashGen.log
+
 echo
-echo "test1: F"
+echo "test1: F" >> bashGen.log
 ./bashGen.sh test1
 if [[ "${?}" == "1" ]]
 then
-  echo "FAILED test1"
-  echo "./bashGen.sh test1"
+  echo "FAILED test1" >> bashGen.log
+  echo "./bashGen.sh test1" >> bashGen.log
 else
-  echo "TRUE"
+  echo "TRUE" >> bashGen.log
 fi
 
 echo
 
 echo
-echo "test2: F"
+echo "test2: F" >> bashGen.log
 ./bashGen.sh test2 -
 if [[ "${?}" == "1" ]]
 then
-  echo "FAILED test2"
-  echo "./bashGen.sh test2 -"
+  echo "FAILED test2" >> bashGen.log
+  echo "./bashGen.sh test2 -" >> bashGen.log
 else
-  echo "TRUE"
+  echo "TRUE" >> bashGen.log
 fi
 
 echo
 
 echo
-echo "test3: T"
+echo "test3: T" >> bashGen.log
 ./bashGen.sh test3 -a
 if [[ "${?}" == "1" ]]
 then
-  echo "FAILED test3"
-  echo "./bashGen.sh test3 -a"
+  echo "FAILED test3" >> bashGen.log
+  echo "./bashGen.sh test3 -a" >> bashGen.log
 else
-  echo "TRUE"
+  echo "TRUE" >> bashGen.log
 fi
 
 echo
 
 echo
-echo "test4: T"
+echo "test4: T" >> bashGen.log
 ./bashGen.sh test4 -v
 if [[ "${?}" == "1" ]]
 then
-  echo "FAILED test4"
-  echo "./bashGen.sh test4 -v"
+  echo "FAILED test4" >> bashGen.log
+  echo "./bashGen.sh test4 -v" >> bashGen.log
 else
-  echo "TRUE"
+  echo "TRUE" >> bashGen.log
 fi
 
 echo
 
 echo
-echo "test5: F"
+echo "test5: F" >> bashGen.log
 ./bashGen.sh test5 - -
 if [[ "${?}" == "1" ]]
 then
-  echo "FAILED test5"
-  echo "./bashGen.sh test5 - -"
+  echo "FAILED test5" >> bashGen.log
+  echo "./bashGen.sh test5 - -" >> bashGen.log
 else
-  echo "TRUE"
+  echo "TRUE" >> bashGen.log
 fi
 
 echo
 
 echo
-echo "test6: T/F"
+echo "test6: T/F" >> bashGen.log
 touch test6.sh
 echo "test6">>test6.sh
 ./bashGen.sh test6 -v
 if [[ "${?}" == "1" ]]
 then
-  echo "FAILED test6"
+  echo "FAILED test6" >> bashGen.log
   echo "touch test6.sh \
     echo \"test6\">>test6.sh\
-        ./bashGen.sh test6 -v"
+        ./bashGen.sh test6 -v" >> bashGen.log
 else
-  echo "TRUE"
+  echo "TRUE" >> bashGen.log
 fi
 
 echo
 
 echo
-echo "test7: T/F"
+echo "test7: T/F" >> bashGen.log
 touch test7.sh
 echo "test7">>test7.sh
 ./bashGen.sh test7 -a
 if [[ "${?}" == "1" ]]
 then
-  echo "FAILED test7"
+  echo "FAILED test7" >> bashGen.log
   echo "touch test7.sh \
     echo \"test6\">>test6.sh\
-        ./bashGen.sh test7 -a"
+        ./bashGen.sh test7 -a" >> bashGen.log
 else
-  echo "TRUE"
+  echo "TRUE" >> bashGen.log
 fi
 
 echo
 
 echo
-echo "test8: T"
+echo "test8: T" >> bashGen.log
 ./bashGen.sh -h
 if [[ "${?}" == "1" ]]
 then
-  echo "FAILED test8"
-  echo "./bashGen.sh -h"
+  echo "FAILED test8" >> bashGen.log
+  echo "./bashGen.sh -h" >> bashGen.log
 else
-  echo "TRUE"
+  echo "TRUE" >> bashGen.log
 fi
 
 echo
 
 echo
-echo "test9: T"
+echo "test9: T" >> bashGen.log
 ./bashGen.sh --help
 if [[ "${?}" == "1" ]]
 then
-  echo "FAILED test9"
-  echo "./bashGen.sh --help"
+  echo "FAILED test9" >> bashGen.log
+  echo "./bashGen.sh --help" >> bashGen.log
 else
-  echo "TRUE"
+  echo "TRUE" >> bashGen.log
 fi
 
 echo
 
 echo
-echo "test10: F"
+echo "test10: F" >> bashGen.log
 ./bashGen.sh
 if [[ "${?}" == "1" ]]
 then
-  echo "FAILED test10"
-  echo "./bashGen.sh"
+  echo "FAILED test10" >> bashGen.log
+  echo "./bashGen.sh" >> bashGen.log
 else
-  echo "TRUE"
+  echo "TRUE" >> bashGen.log
 fi
 
 echo
@@ -143,7 +146,7 @@ do
   rm "test${i}.sh"
   if [[ "${?}" == "1" ]]
   then
-    echo "couldn't delete test${i}.sh"
+    echo "couldn't delete test${i}.sh" >> bashGen.log
   fi
 done
 exit 0
