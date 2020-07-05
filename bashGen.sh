@@ -16,7 +16,7 @@ fi
 # check for help
 if [[ ${1} == "-h" || ${1} == "--help" ]]
 then
-  echo "FILENAME EDITOR"
+  echo "<FILENAME> <EDITOR>"
   echo "FILENAME doesn't need .sh extension"
   echo "EDITOR options: "
   echo "	-a or --atom opens file in Atom text editor"
