@@ -22,12 +22,14 @@ then
   echo "	-a or --atom opens file in Atom text editor"
   echo "	-v or --vim opens file in Vim text editor"
   exit 0
+# check for too few arguments
 elif [[ ${#} -lt 2 ]]
 then
   echo "Command needs arguments"
   echo "Use -h or --help for help"
   exit 1
 else
+  # set filename with the addition of .sh
   FILENAME="${1}.sh"
   shift
 fi
@@ -82,9 +84,10 @@ then
     exit 0
   fi
 else
+  # catch bad editor argument
   echo "${1} is not a vaild editor option"
   echo "use -h or --help to get proper format"
   exit 1
 fi
-echo "reached end, exiting with 0"
+
 exit 0
