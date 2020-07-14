@@ -6,7 +6,7 @@ FILENAME=""
 EDITOR=""
 
 usage() {
-  echo "-a|-v FILENAME "
+  echo "FILENAME -a|-v "
   echo "FILENAME doesn't need .sh extension"
   echo "EDITOR options: "
   echo "	-a or --atom opens file in Atom text editor"
