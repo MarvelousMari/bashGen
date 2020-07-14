@@ -16,6 +16,9 @@ usage() {
 
 
 #check to see if there are too many arguments provided
+
+# TODO: Replace IF statement tree with while getops cmd loop
+
 if [[ ${#} -gt 2 ]]
 then
   usage
