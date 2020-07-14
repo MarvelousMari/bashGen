@@ -5,29 +5,32 @@
 FILENAME=""
 EDITOR=""
 
+usage() {
+  echo "-a|-v FILENAME "
+  echo "FILENAME doesn't need .sh extension"
+  echo "EDITOR options: "
+  echo "	-a or --atom opens file in Atom text editor"
+  echo "	-v or --vim opens file in Vim text editor"
+}
+
+
+
 #check to see if there are too many arguments provided
 if [[ ${#} -gt 2 ]]
 then
-  echo "'${@}' is too many arguments"
-  echo "use -h or --help to see proper format"
+  usage
   exit 1
 fi
 
 # check for help
 if [[ ${1} == "-h" || ${1} == "--help" ]]
 then
-  echo "<FILENAME> <EDITOR>"
-  echo "FILENAME doesn't need .sh extension"
-  echo "EDITOR options: "
-  echo "	-a or --atom opens file in Atom text editor"
-  echo "	-v or --vim opens file in Vim text editor"
+  usage
   exit 0
 # check for too few arguments
 elif [[ ${#} -lt 2 ]]
 then
-  echo "Command needs arguments"
-  echo "Use -h or --help for help"
-  exit 1
+  usage
 else
   # set filename with the addition of .sh
   FILENAME="${1}.sh"
@@ -54,6 +57,7 @@ then
     fi
   done
 else
+  # TODO: FIX Double writing shabang in some cases
   #create file, add shabang, and make the file executeable
   touch "${FILENAME}"
   echo "#!/bin/bash">>${FILENAME}
@@ -86,7 +90,7 @@ then
 else
   # catch bad editor argument
   echo "${1} is not a vaild editor option"
-  echo "use -h or --help to get proper format"
+  usage
   exit 1
 fi
 
